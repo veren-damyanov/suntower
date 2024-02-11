@@ -17,5 +17,4 @@ animations = [{
 [node name="Sprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_14d2u")
 animation = &"idle"
-centered = false
 script = ExtResource("2_q62am")

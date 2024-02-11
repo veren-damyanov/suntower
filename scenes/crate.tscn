@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://df5upfyhe0fgi"]
+
+[ext_resource type="Texture2D" uid="uid://damt2cq3cfia0" path="res://assets/sprites/crate.png" id="1_drhda"]
+[ext_resource type="PackedScene" uid="uid://bg32caj02ofpw" path="res://scenes/occluder.tscn" id="2_d7iwb"]
+
+[node name="Crate" type="Sprite2D"]
+texture = ExtResource("1_drhda")
+
+[node name="OccluderRoot" parent="." instance=ExtResource("2_d7iwb")]

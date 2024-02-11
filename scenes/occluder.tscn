@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg32caj02ofpw"]
+
+[ext_resource type="Texture2D" uid="uid://ci75neqslwf0n" path="res://assets/sprites/light.png" id="1_8rm3v"]
+
+[node name="OccluderRoot" type="Node2D"]
+
+[node name="Occluder" type="PointLight2D" parent="."]
+position = Vector2(0, 80)
+energy = 0.4
+blend_mode = 1
+texture = ExtResource("1_8rm3v")
