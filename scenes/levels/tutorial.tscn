@@ -27,10 +27,12 @@ script = ExtResource("3_shtoi")
 [node name="Crate" parent="Pushables" instance=ExtResource("4_tgws7")]
 position = Vector2(124, 92)
 
-[node name="Door" parent="." instance=ExtResource("5_3vx62")]
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="Door" parent="Interactables" instance=ExtResource("5_3vx62")]
 position = Vector2(300, 68)
 
-[node name="Key" parent="." instance=ExtResource("6_y7pok")]
+[node name="Key" parent="Interactables" instance=ExtResource("6_y7pok")]
 position = Vector2(260, 100)
 
 [node name="TutorialText1" type="Label" parent="."]

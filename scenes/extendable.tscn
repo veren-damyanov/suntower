@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://baruwig74eaou"]
+
+[ext_resource type="Texture2D" uid="uid://csers2k13q2ag" path="res://assets/sprites/extendable2.png" id="1_d4e5s"]
+[ext_resource type="Texture2D" uid="uid://svjsh8kfsjce" path="res://assets/sprites/extendable1.png" id="2_ndbem"]
+[ext_resource type="PackedScene" uid="uid://bg32caj02ofpw" path="res://scenes/occluder.tscn" id="3_5pw7m"]
+[ext_resource type="Script" path="res://scripts/extendable.gd" id="3_8ooow"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1uhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d4e5s")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ndbem")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Extendable" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_y1uhy")
+animation = &"up"
+script = ExtResource("3_8ooow")
+
+[node name="OccluderRoot" parent="." instance=ExtResource("3_5pw7m")]

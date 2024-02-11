@@ -6,9 +6,9 @@ const EXIT_TILES = [Vector2i(1, 3)]
 var lit = false
 var has_key = false
 var exit_open = false
-var interactable = null
-@onready var tilemap = $"../TileMap"
 @onready var pushables = $"../Pushables"
+@onready var interactables = $"../Interactables"
+@onready var tilemap = $"../TileMap"
 @onready var key = $"../Key"
 @onready var door = $"../Door"
 
@@ -54,7 +54,7 @@ func move(dx: int, dy: int) -> void:
         self.death()
         return
     if tile_id in FLOOR_TILES:
-        for object in self.pushables.get_pushables():
+        for object in self.pushables.all():
             var object_pos = self.tilemap.local_to_map(object.get_position())
             if object_pos != move_to:
                 continue
@@ -65,14 +65,20 @@ func move(dx: int, dy: int) -> void:
 
 func interact() -> void:
     var player_pos = self.tilemap.local_to_map(self.position)
-    var key_pos = self.tilemap.local_to_map(self.key.get_position())
-    var door_pos = self.tilemap.local_to_map(self.door.get_position())
-    if !self.has_key and player_pos == key_pos:
-        self.has_key = true
-        self.key.visible = false
-    if !self.exit_open and self.has_key and player_pos == Vector2i(door_pos.x, door_pos.y + 1):
-        self.exit_open = true
-        self.door.play('open')
+    for object in self.interactables.get_children():
+        var object_pos = self.tilemap.local_to_map(object.get_position())
+        if object.is_in_group('key'):
+            if !self.has_key and player_pos == object_pos:
+                self.has_key = true
+                object.queue_free()
+        object_pos = Vector2i(object_pos.x, object_pos.y + 1)
+        if object.is_in_group('door'):
+            if !self.exit_open and self.has_key and player_pos == object_pos:
+                self.exit_open = true
+                object.play('open')
+        if object.is_in_group('lever'):
+            if player_pos == object_pos:
+                object.pull()
 
 func _move_player(new_position):
     self.update_visual(self, new_position)

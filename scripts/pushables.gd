@@ -1,12 +1,13 @@
 extends Node2D
 
-var dynamic_occluders = Array()
+var pushables: Array = Array()
 @onready var tilemap = $"../TileMap"
 
 
 func _ready() -> void:
     for child in self.get_children():
-        self.dynamic_occluders.append(child)
+        self.pushables.append(child)
+    self.tilemap.update_occluders()
 
-func get_pushables() -> Array:
-    return self.dynamic_occluders
+func all() -> Array:
+    return self.pushables

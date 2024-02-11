@@ -6,6 +6,7 @@ const OCCLUDER_TILES = [Vector2i(2, 1)]
 var lights = Array()
 var occluders = Array()
 @onready var pushables = $"../Pushables"
+@onready var extendables = $"../Extendables"
 
 
 func _ready():
@@ -22,9 +23,15 @@ func is_object_lit(candidate: Node2D) -> bool:
         var occluder_pos = self.local_to_map(occluder.get_position())
         if occluder_pos.x == candidate_pos.x and occluder_pos.y < candidate_pos.y:
             verdict = false
-    for occluder in self.pushables.get_pushables():
-        var occluder_pos = self.local_to_map(occluder.get_position())
-        if occluder_pos.x == candidate_pos.x and occluder_pos.y < candidate_pos.y:
+    for pushable in self.pushables.all():
+        var pushable_pos = self.local_to_map(pushable.get_position())
+        if pushable_pos.x == candidate_pos.x and pushable_pos.y < candidate_pos.y:
+            verdict = false
+    for extendable in self.extendables.all():
+        if extendable.state == 0:
+            continue
+        var pushable_pos = self.local_to_map(extendable.get_position())
+        if pushable_pos.x == candidate_pos.x and pushable_pos.y < candidate_pos.y:
             verdict = false
     return verdict
 
@@ -43,5 +50,10 @@ func _create_occluders() -> void:
 func update_occluders() -> void:
     for occluder in self.occluders:
         occluder.visible = self.is_object_lit(occluder)
-    for occluder in self.pushables.get_pushables():
-        occluder.get_children()[0].visible = self.is_object_lit(occluder)
+    for pushable in self.pushables.all():
+        pushable.get_node('OccluderRoot').visible = self.is_object_lit(pushable)
+    for extendable in self.extendables.all():
+        if extendable.state == 1 and self.is_object_lit(extendable):
+            extendable.get_node('OccluderRoot').visible = true
+        else:
+            extendable.get_node('OccluderRoot').visible = false
