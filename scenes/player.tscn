@@ -14,7 +14,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sprite" type="AnimatedSprite2D"]
+[node name="Player" type="AnimatedSprite2D"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_14d2u")
 animation = &"idle"
 script = ExtResource("2_q62am")

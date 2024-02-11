@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu0ttyavggbwx"]
+
+[ext_resource type="Texture2D" uid="uid://cpmd6ia5x122n" path="res://assets/sprites/door.png" id="1_s6qsv"]
+[ext_resource type="Texture2D" uid="uid://bodpa8hvqrtkx" path="res://assets/sprites/door-open.png" id="2_oo8p5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_boqyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s6qsv")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oo8p5")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Door" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_boqyo")
+animation = &"closed"
