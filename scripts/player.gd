@@ -64,6 +64,7 @@ func move(dx: int, dy: int) -> void:
         self._move_player(move_to)
 
 func interact() -> void:
+    var interacted = false
     var player_pos = self.tilemap.local_to_map(self.position)
     for object in self.interactables.get_children():
         var object_pos = self.tilemap.local_to_map(object.get_position())
@@ -71,14 +72,19 @@ func interact() -> void:
             if !self.has_key and player_pos == object_pos:
                 self.has_key = true
                 object.queue_free()
+                interacted = true
         object_pos = Vector2i(object_pos.x, object_pos.y + 1)
         if object.is_in_group('door'):
             if !self.exit_open and self.has_key and player_pos == object_pos:
                 self.exit_open = true
                 object.play('open')
+                interacted = true
         if object.is_in_group('lever'):
             if player_pos == object_pos:
                 object.pull()
+                interacted = true
+    if interacted and self.lit:
+        self.death()
 
 func _move_player(new_position):
     self.update_visual(self, new_position)
