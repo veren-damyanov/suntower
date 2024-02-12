@@ -1,10 +1,16 @@
 extends Node
 
 const LEVELS = ['tutorial', 'level1']
+const DEATH_MSG = ['sunscorched', 'incinerated', 'you died', '451"F']
+const BLACK = Color8(0, 0, 0, 255)
+const RED = Color8(100, 20, 20, 255)
+const GREEN = Color8(20, 100, 20, 255)
 
 var current_idx: int = 0
 var current_level
 var unpausable = true
+var rng = RandomNumberGenerator.new()
+@onready var title = $PauseCanvas/PauseMenu/VerticalContainer/Title
 @onready var resume_btn = $PauseCanvas/PauseMenu/VerticalContainer/Resume
 @onready var retry_btn = $PauseCanvas/PauseMenu/VerticalContainer/Retry
 @onready var next_btn = $PauseCanvas/PauseMenu/VerticalContainer/Next
@@ -19,7 +25,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
     if self.unpausable and  event.is_action_pressed('pause'):
-        self.set_pause_text('game is paused')
+        self.set_pause_text('game is paused', BLACK)
         self.set_pause_buttons()
         self.toggle_pause()
         self.resume_btn.grab_focus()
@@ -47,21 +53,24 @@ func toggle_pause() -> void:
     $PauseCanvas/PauseTint.visible = !paused
 
 func death() -> void:
+    var msg = DEATH_MSG[rng.randi_range(0, len(DEATH_MSG)-1)]
     self.unpausable = false
-    self.set_pause_text('i am become death')
+    self.set_pause_text(msg, RED)
+    var red = Color(1.0,0.0,0.0,1.0)
     self.set_pause_buttons(false)
     self.toggle_pause()
     self.retry_btn.grab_focus()
 
 func victory() -> void:
     self.unpausable = false
-    self.set_pause_text('floor descended')
+    self.set_pause_text('floor cleared', GREEN)
     self.set_pause_buttons(false, true, true, true)
     self.toggle_pause()
     self.next_btn.grab_focus()
 
-func set_pause_text(text: String):
-    $PauseCanvas/PauseMenu/VerticalContainer/Title.set_text(text)
+func set_pause_text(text: String, color: Color):
+    self.title.set_text(text)
+    self.title.set("theme_override_colors/font_color", color)
 
 func set_pause_buttons(resume=true, retry=true, next=false, exit=true) -> void:
     for btn in self.buttons:
