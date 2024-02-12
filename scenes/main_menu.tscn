@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://nncl2wstcc6a"]
+
+[ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="1_nttkl"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_vbvdc"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nttkl")
+script = ExtResource("2_vbvdc")
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Escape the sun tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin" type="Label" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="VerticalContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Start" type="Button" parent="VerticalContainer/Buttons"]
+layout_mode = 2
+text = "start"
+
+[node name="Level Select" type="Button" parent="VerticalContainer/Buttons"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="Options" type="Button" parent="VerticalContainer/Buttons"]
+layout_mode = 2
+text = "Options"
+
+[node name="Exit" type="Button" parent="VerticalContainer/Buttons"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VerticalContainer/Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VerticalContainer/Buttons/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="VerticalContainer/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VerticalContainer/Buttons/Exit" to="." method="_on_exit_pressed"]

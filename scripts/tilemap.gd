@@ -1,7 +1,10 @@
 extends TileMap
 
-const WINDOW_TILES = [Vector2i(1, 2)]
-const OCCLUDER_TILES = [Vector2i(2, 1)]
+const WINDOW_TILES = [Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5),
+                      Vector2i(1, 3), Vector2i(1, 4), Vector2i(1, 5),
+                      Vector2i(2, 3), Vector2i(2, 4), Vector2i(2, 5),
+                      Vector2i(3, 3), Vector2i(3, 4), Vector2i(3, 5)]
+const OCCLUDER_TILES = [Vector2i(3, 2)]
 
 var lights = Array()
 var occluders = Array()

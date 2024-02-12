@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://dua3clu1xcmj2"]
+
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_hdc8s"]
+[ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="1_jov0o"]
+
+[node name="Options" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hdc8s")
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme = ExtResource("1_jov0o")
+
+[node name="AudioLabel" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VerticalContainer/AudioLabel"]
+layout_mode = 2
+text = "Audio"
+vertical_alignment = 1
+
+[node name="Percentage" type="Label" parent="VerticalContainer/AudioLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="VerticalContainer"]
+layout_mode = 2
+ticks_on_borders = true
+
+[node name="Fullscreen" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VerticalContainer/Fullscreen"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Toggle" type="CheckButton" parent="VerticalContainer/Fullscreen"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="VerticalContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="VerticalContainer/Back" to="." method="_on_back_pressed"]
