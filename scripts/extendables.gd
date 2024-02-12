@@ -5,7 +5,6 @@ var extendables: Array = Array()
 
 
 func _ready() -> void:
-    print('extendables.ready()')
     for child in self.get_children():
         self.extendables.append(child)
     self.tilemap.update_occluders()

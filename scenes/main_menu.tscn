@@ -38,7 +38,7 @@ alignment = 2
 
 [node name="Start" type="Button" parent="VerticalContainer/Buttons"]
 layout_mode = 2
-text = "start"
+text = "play"
 
 [node name="Level Select" type="Button" parent="VerticalContainer/Buttons"]
 layout_mode = 2

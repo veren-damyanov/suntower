@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4eefcvxrcypp"]
+[gd_scene load_steps=3 format=3 uid="uid://c4eefcvxrcypp"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_xe1x5"]
 [ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="2_qk7mt"]
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_rxvq3"]
 
 [node name="LevelManager" type="Node"]
 process_mode = 3
@@ -31,7 +30,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_qk7mt")
-script = ExtResource("3_rxvq3")
 
 [node name="VerticalContainer" type="VBoxContainer" parent="PauseCanvas/PauseMenu"]
 custom_minimum_size = Vector2(110, 0)
@@ -44,13 +42,23 @@ text = "game is paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Next" type="Button" parent="PauseCanvas/PauseMenu/VerticalContainer"]
+layout_mode = 2
+text = "Descend"
+
 [node name="Resume" type="Button" parent="PauseCanvas/PauseMenu/VerticalContainer"]
 layout_mode = 2
 text = "Resume"
+
+[node name="Retry" type="Button" parent="PauseCanvas/PauseMenu/VerticalContainer"]
+layout_mode = 2
+text = "Retry"
 
 [node name="Exit" type="Button" parent="PauseCanvas/PauseMenu/VerticalContainer"]
 layout_mode = 2
 text = "Exit"
 
+[connection signal="pressed" from="PauseCanvas/PauseMenu/VerticalContainer/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="PauseCanvas/PauseMenu/VerticalContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseCanvas/PauseMenu/VerticalContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="PauseCanvas/PauseMenu/VerticalContainer/Exit" to="." method="_on_exit_pressed"]

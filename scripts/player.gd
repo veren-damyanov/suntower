@@ -51,7 +51,7 @@ func move(dx: int, dy: int) -> void:
     var tile_id = self.tilemap.get_cell_atlas_coords(0, move_to)
     if self.exit_open and tile_id in EXIT_TILES:
         self._move_player(move_to)
-        self.death()
+        self.get_parent().get_parent().victory()
         return
     if tile_id in FLOOR_TILES:
         for object in self.pushables.all():
@@ -100,5 +100,4 @@ func update_visual(object: Node2D, new_position: Vector2i) -> void:
     object.set_position(self.tilemap.map_to_local(new_position))
 
 func death():
-    self.get_tree().paused = true
-    print('DEATH')
+    self.get_parent().get_parent().death()
