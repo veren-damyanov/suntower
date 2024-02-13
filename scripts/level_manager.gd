@@ -1,6 +1,6 @@
 extends Node
 
-const LEVELS = ['tutorial', 'level1']
+const LEVELS = ['tutorial', 'level1', 'level2']
 const DEATH_MSG = ['sunscorched', 'incinerated', 'you died', '451"F']
 const BLACK = Color8(0, 0, 0, 255)
 const RED = Color8(100, 20, 20, 255)
