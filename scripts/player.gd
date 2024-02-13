@@ -6,11 +6,9 @@ const EXIT_TILES = [Vector2i(1, 2)]
 var lit = false
 var has_key = false
 var exit_open = false
+@onready var tilemap = $"../TileMap"
 @onready var pushables = $"../Pushables"
 @onready var interactables = $"../Interactables"
-@onready var tilemap = $"../TileMap"
-@onready var key = $"../Key"
-@onready var door = $"../Door"
 
 
 func _collect_occluder_objects() -> Array[Vector2i]:
@@ -38,8 +36,7 @@ func _input(event: InputEvent) -> void:
 func _move_pushable(object: Sprite2D, dx: int, dy: int) -> bool:
     var object_pos = self.tilemap.local_to_map(object.get_position())
     var push_to = Vector2(object_pos.x + dx, object_pos.y + dy)
-    var tile_id = self.tilemap.get_cell_atlas_coords(0, push_to)
-    if tile_id in FLOOR_TILES:
+    if self.tilemap.is_tile_free(push_to):
         self.update_visual(object, push_to)
         self.tilemap.update_occluders()
         return true
@@ -61,7 +58,8 @@ func move(dx: int, dy: int) -> void:
             if self._move_pushable(object, dx, dy):
                 self._move_player(move_to)
             return
-        self._move_player(move_to)
+        if self.tilemap.is_tile_free(move_to):
+            self._move_player(move_to)
 
 func interact() -> void:
     var interacted = false

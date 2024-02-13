@@ -5,6 +5,7 @@ const WINDOW_TILES = [Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5),
                       Vector2i(2, 3), Vector2i(2, 4), Vector2i(2, 5),
                       Vector2i(3, 3), Vector2i(3, 4), Vector2i(3, 5)]
 const OCCLUDER_TILES = [Vector2i(3, 2)]
+const FLOOR_TILES = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
 
 var lights = Array()
 var occluders = Array()
@@ -37,6 +38,20 @@ func is_object_lit(candidate: Node2D) -> bool:
         if pushable_pos.x == candidate_pos.x and pushable_pos.y < candidate_pos.y:
             verdict = false
     return verdict
+
+func is_tile_free(tile_pos: Vector2i):
+    var tile_id = self.get_cell_atlas_coords(0, tile_pos)
+    if tile_id not in FLOOR_TILES:
+        return false
+    for pushable in self.pushables.all():
+        if self.local_to_map(pushable.get_position()) == tile_pos:
+            return false
+    for extendable in self.extendables.all():
+        if extendable.state != 1:
+            continue
+        if self.local_to_map(extendable.get_position()) == tile_pos:
+            return false
+    return true
 
 func _create_occluders() -> void:
     var occluder_scene = load("res://scenes/occluder.tscn")
