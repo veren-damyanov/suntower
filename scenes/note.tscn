@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4pfvjvtsplo5"]
+
+[ext_resource type="Texture2D" uid="uid://cks4ln0ifi1fh" path="res://assets/sprites/note.png" id="1_jngmp"]
+[ext_resource type="Script" path="res://scripts/note.gd" id="2_avuyu"]
+
+[node name="Note" type="Sprite2D" groups=["note"]]
+texture = ExtResource("1_jngmp")
+script = ExtResource("2_avuyu")

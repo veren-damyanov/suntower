@@ -10,6 +10,7 @@ var current_idx: int = 0
 var current_level
 var unpausable = true
 var rng = RandomNumberGenerator.new()
+var just_read = false
 @onready var title = $PauseCanvas/PauseMenu/VerticalContainer/Title
 @onready var resume_btn = $PauseCanvas/PauseMenu/VerticalContainer/Resume
 @onready var retry_btn = $PauseCanvas/PauseMenu/VerticalContainer/Retry
@@ -24,7 +25,10 @@ func _ready() -> void:
     self.add_child(self.current_level)
 
 func _input(event: InputEvent) -> void:
-    if self.unpausable and  event.is_action_pressed('pause'):
+    if self.just_read:
+        self.just_read = false
+        return
+    if self.unpausable and event.is_action_pressed('pause'):
         self.set_pause_text('game is paused', BLACK)
         self.set_pause_buttons()
         self.toggle_pause()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dni504al1agpe"]
+[gd_scene load_steps=10 format=3 uid="uid://dni504al1agpe"]
 
 [ext_resource type="PackedScene" uid="uid://pcre451eyt6y" path="res://scenes/tile_map.tscn" id="1_3qlt0"]
 [ext_resource type="PackedScene" uid="uid://cxv8jm2mrpxj2" path="res://scenes/player.tscn" id="2_v68h2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/extendables.gd" id="5_ubxpd"]
 [ext_resource type="PackedScene" uid="uid://dnasunky44442" path="res://scenes/key.tscn" id="6_y7pok"]
 [ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="7_hslf7"]
+[ext_resource type="PackedScene" uid="uid://b4pfvjvtsplo5" path="res://scenes/note.tscn" id="8_8nxqp"]
 
 [node name="Level1" type="Node2D"]
 
@@ -39,6 +40,10 @@ position = Vector2(300, 68)
 
 [node name="Key" parent="Interactables" instance=ExtResource("6_y7pok")]
 position = Vector2(260, 100)
+
+[node name="Note" parent="Interactables" instance=ExtResource("8_8nxqp")]
+position = Vector2(36, 76)
+text = "night... never  arrives... tower is cursed... the sun... strong enough to burn us..."
 
 [node name="TutorialText1" type="Label" parent="."]
 offset_left = 24.0

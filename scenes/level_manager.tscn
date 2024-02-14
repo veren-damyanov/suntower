@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4eefcvxrcypp"]
+[gd_scene load_steps=4 format=3 uid="uid://c4eefcvxrcypp"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_xe1x5"]
 [ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="2_qk7mt"]
+[ext_resource type="Texture2D" uid="uid://bxpgy0ihm1a3e" path="res://assets/sprites/note-background.png" id="3_1lloq"]
 
 [node name="LevelManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_xe1x5")
+
+[node name="NoteCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="NoteBackground" type="Sprite2D" parent="NoteCanvas"]
+position = Vector2(160, 80)
+texture = ExtResource("3_1lloq")
+
+[node name="NoteText" type="Label" parent="NoteCanvas"]
+offset_left = 118.0
+offset_top = 17.0
+offset_right = 201.0
+offset_bottom = 139.0
+theme = ExtResource("2_qk7mt")
+theme_override_colors/font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+autowrap_mode = 3
 
 [node name="PauseCanvas" type="CanvasLayer" parent="."]
 
