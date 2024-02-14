@@ -4,7 +4,7 @@ var on = false
 @export var text = "placeholder"
 @onready var manager = $"../../../"
 @onready var note_canvas = $"../../../NoteCanvas"
-@onready var note_label = $"../../../NoteCanvas/NoteText"
+@onready var note_label = $"../../../NoteCanvas/Margin/NoteText"
 @onready var player = $"../../Player"
 
 
