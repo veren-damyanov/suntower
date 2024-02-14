@@ -4,58 +4,79 @@
 [ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="1_jov0o"]
 [ext_resource type="Texture2D" uid="uid://bkmvf0i2shuq6" path="res://assets/sprites/main_menu.png" id="3_crvvm"]
 
-[node name="Options" type="CenterContainer"]
+[node name="Options" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hdc8s")
-
-[node name="VerticalContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(110, 0)
-layout_mode = 2
 theme = ExtResource("1_jov0o")
-
-[node name="AudioLabel" type="HBoxContainer" parent="VerticalContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="VerticalContainer/AudioLabel"]
-layout_mode = 2
-text = "Audio"
-vertical_alignment = 1
-
-[node name="Percentage" type="Label" parent="VerticalContainer/AudioLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "100%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="AudioSlider" type="HSlider" parent="VerticalContainer"]
-layout_mode = 2
-value = 100.0
-
-[node name="Fullscreen" type="HBoxContainer" parent="VerticalContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VerticalContainer/Fullscreen"]
-layout_mode = 2
-text = "Fullscreen"
-
-[node name="Toggle" type="CheckButton" parent="VerticalContainer/Fullscreen"]
-layout_mode = 2
-button_pressed = true
-
-[node name="Back" type="Button" parent="VerticalContainer"]
-layout_mode = 2
-text = "Back"
+script = ExtResource("1_hdc8s")
 
 [node name="MainMenu" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(160, 90)
 texture = ExtResource("3_crvvm")
 
-[connection signal="toggled" from="VerticalContainer/Fullscreen/Toggle" to="." method="_on_toggle_toggled"]
-[connection signal="pressed" from="VerticalContainer/Back" to="." method="_on_back_pressed"]
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Margin" type="Label" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Horizontal" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Settings" type="VBoxContainer" parent="VerticalContainer/Horizontal"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_jov0o")
+
+[node name="AudioLabel" type="HBoxContainer" parent="VerticalContainer/Horizontal/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VerticalContainer/Horizontal/Settings/AudioLabel"]
+layout_mode = 2
+text = "Audio"
+vertical_alignment = 1
+
+[node name="Percentage" type="Label" parent="VerticalContainer/Horizontal/Settings/AudioLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="VerticalContainer/Horizontal/Settings"]
+layout_mode = 2
+value = 100.0
+
+[node name="Fullscreen" type="HBoxContainer" parent="VerticalContainer/Horizontal/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VerticalContainer/Horizontal/Settings/Fullscreen"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Toggle" type="CheckButton" parent="VerticalContainer/Horizontal/Settings/Fullscreen"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Back" type="Button" parent="VerticalContainer/Horizontal/Settings"]
+layout_mode = 2
+text = "Back"
+
+[node name="Margin" type="Label" parent="VerticalContainer/Horizontal"]
+layout_mode = 2
+text = "     "
+
+[connection signal="pressed" from="VerticalContainer/Horizontal/Settings/Back" to="." method="_on_back_pressed"]

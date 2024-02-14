@@ -21,7 +21,7 @@ alignment = 1
 [node name="Title" type="Label" parent="VerticalContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Escape the sun tower"
+text = "escape the sun tower"
 horizontal_alignment = 1
 vertical_alignment = 1
 
