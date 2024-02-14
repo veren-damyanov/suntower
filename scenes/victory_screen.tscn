@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cciicursww6oh"]
+
+[ext_resource type="Texture2D" uid="uid://o2o7c5wdajeq" path="res://assets/sprites/victory_background.png" id="1_rmxl4"]
+[ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="2_u0q60"]
+
+[node name="VictoryScreen" type="Sprite2D"]
+texture = ExtResource("1_rmxl4")
+centered = false
+
+[node name="VictoryText1" type="Label" parent="."]
+offset_left = 93.0
+offset_top = 26.0
+offset_right = 285.0
+offset_bottom = 85.0
+theme = ExtResource("2_u0q60")
+theme_override_font_sizes/font_size = 32
+text = "you made it.."
+
+[node name="VictoryText2" type="Label" parent="."]
+offset_left = 77.0
+offset_top = 67.0
+offset_right = 315.0
+offset_bottom = 126.0
+theme = ExtResource("2_u0q60")
+theme_override_font_sizes/font_size = 32
+text = "you escaped the tower"

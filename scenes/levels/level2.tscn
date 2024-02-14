@@ -71,7 +71,7 @@ position = Vector2(180, 100)
 channel = 1
 
 [node name="Key" parent="Interactables" instance=ExtResource("8_tw16e")]
-position = Vector2(116, 92)
+position = Vector2(116, 100)
 
 [node name="Door" parent="Interactables" instance=ExtResource("9_p0phl")]
 position = Vector2(300, 68)

@@ -9,17 +9,22 @@ const GREEN = Color8(20, 100, 20, 255)
 var current_idx: int = 0
 var current_level
 var unpausable = true
-var rng = RandomNumberGenerator.new()
 var just_read = false
+var game_won = false
+var animation_callback: String
+var rng = RandomNumberGenerator.new()
 @onready var title = $PauseCanvas/PauseMenu/VerticalContainer/Title
 @onready var resume_btn = $PauseCanvas/PauseMenu/VerticalContainer/Resume
 @onready var retry_btn = $PauseCanvas/PauseMenu/VerticalContainer/Retry
 @onready var next_btn = $PauseCanvas/PauseMenu/VerticalContainer/Next
 @onready var exit_btn = $PauseCanvas/PauseMenu/VerticalContainer/Exit
 @onready var buttons = [resume_btn, retry_btn, next_btn, exit_btn]
+@onready var animation = $Transition/AnimationPlayer
 
 
 func _ready() -> void:
+    $Transition/Fade.set_color(Color(0, 0, 0, 1))
+    self.animation.play('fade_in')
     var level = load('res://scenes/levels/%s.tscn' % LEVELS[current_idx])
     self.current_level = level.instantiate()
     self.add_child(self.current_level)
@@ -39,9 +44,6 @@ func reload() -> void:
 
 func load_next() -> void:
     self.current_idx += 1
-    if self.current_idx == len(LEVELS):
-        print('game won!')
-        return
     self.load_level(self.current_idx)
 
 func load_level(idx: int) -> void:
@@ -49,6 +51,12 @@ func load_level(idx: int) -> void:
     var new_scene = load("res://scenes/levels/%s.tscn" % LEVELS[self.current_idx])
     self.current_level = new_scene.instantiate()
     self.add_child(self.current_level)
+
+func load_victory_screen() -> void:
+    self.current_level.queue_free()
+    var new_scene = load("res://scenes/victory_screen.tscn")
+    var victory_screen = new_scene.instantiate()
+    self.add_child(victory_screen)
 
 func toggle_pause() -> void:
     var paused = self.get_tree().paused
@@ -67,6 +75,11 @@ func death() -> void:
 
 func victory() -> void:
     self.unpausable = false
+    if self.current_idx + 1 == len(LEVELS):
+        self.game_won = true
+        self.animation_callback = 'load_victory_screen'
+        self.animation.play('fade_out')
+        return
     self.set_pause_text('floor cleared', GREEN)
     self.set_pause_buttons(false, true, true, true)
     self.toggle_pause()
@@ -89,6 +102,10 @@ func set_pause_buttons(resume=true, retry=true, next=false, exit=true) -> void:
         self.exit_btn.show()
 
 func _on_next_pressed() -> void:
+    self.animation_callback = '_complete_level'
+    self.animation.play('fade_out')
+
+func _complete_level() -> void:
     self.load_next()
     self.toggle_pause()
     self.unpausable = true
@@ -104,3 +121,6 @@ func _on_retry_pressed() -> void:
 func _on_exit_pressed() -> void :
     self.get_tree().paused = false
     self.get_tree().change_scene_to_file('res://scenes/main_menu.tscn')
+
+func _on_animation_finished():
+    call(self.animation_callback)
