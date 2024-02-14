@@ -35,7 +35,7 @@ vertical_alignment = 1
 
 [node name="AudioSlider" type="HSlider" parent="VerticalContainer"]
 layout_mode = 2
-ticks_on_borders = true
+value = 100.0
 
 [node name="Fullscreen" type="HBoxContainer" parent="VerticalContainer"]
 layout_mode = 2
