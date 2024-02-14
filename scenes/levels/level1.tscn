@@ -37,7 +37,7 @@ position = Vector2(52, 108)
 position = Vector2(132, 100)
 
 [node name="Crate4" parent="Pushables" instance=ExtResource("3_xli5k")]
-position = Vector2(172, 84)
+position = Vector2(180, 124)
 
 [node name="Extendables" type="Node2D" parent="."]
 script = ExtResource("5_3epy7")
@@ -57,7 +57,7 @@ channel = 1
 [node name="Interactables" type="Node2D" parent="."]
 
 [node name="Lever" parent="Interactables" instance=ExtResource("5_tcpgy")]
-position = Vector2(172, 68)
+position = Vector2(172, 76)
 channel = 1
 
 [node name="Key" parent="Interactables" instance=ExtResource("6_nlo4e")]

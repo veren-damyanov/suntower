@@ -61,6 +61,12 @@ func move(dx: int, dy: int) -> void:
             if self._move_pushable(object, dx, dy):
                 self._move_player(move_to)
             return
+        for object in self.interactables.get_children():
+            var object_pos = self.tilemap.local_to_map(object.get_position())
+            if object_pos != move_to:
+                continue
+            self._move_player(move_to)
+            return
         if self.tilemap.is_tile_free(move_to):
             self._move_player(move_to)
 
@@ -86,15 +92,15 @@ func interact() -> void:
                 player_pos.x - 1 == object_pos.x:
                     object.toggle()
                     interacted = true
+        if object.is_in_group('lever'):
+            if player_pos == object_pos:
+                object.pull()
+                interacted = true
         object_pos = Vector2i(object_pos.x, object_pos.y + 1)
         if object.is_in_group('door'):
             if !self.exit_open and self.has_key and player_pos == object_pos:
                 self.exit_open = true
                 object.play('open')
-                interacted = true
-        if object.is_in_group('lever'):
-            if player_pos == object_pos:
-                object.pull()
                 interacted = true
     if interacted and self.lit:
         self.death()

@@ -67,7 +67,7 @@ channel = 1
 [node name="Interactables" type="Node2D" parent="."]
 
 [node name="Lever" parent="Interactables" instance=ExtResource("7_unt37")]
-position = Vector2(180, 68)
+position = Vector2(180, 100)
 channel = 1
 
 [node name="Key" parent="Interactables" instance=ExtResource("8_tw16e")]

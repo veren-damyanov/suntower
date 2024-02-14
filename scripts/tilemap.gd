@@ -11,6 +11,7 @@ var lights = Array()
 var occluders = Array()
 @onready var pushables = $"../Pushables"
 @onready var extendables = $"../Extendables"
+@onready var interactables = $"../Interactables"
 
 
 func _ready():
@@ -50,6 +51,9 @@ func is_tile_free(tile_pos: Vector2i):
         if extendable.state != 1:
             continue
         if self.local_to_map(extendable.get_position()) == tile_pos:
+            return false
+    for interactable in self.interactables.get_children():
+        if self.local_to_map(interactable.get_position()) == tile_pos:
             return false
     return true
 
