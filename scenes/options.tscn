@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dua3clu1xcmj2"]
+[gd_scene load_steps=4 format=3 uid="uid://dua3clu1xcmj2"]
 
 [ext_resource type="Script" path="res://scripts/options.gd" id="1_hdc8s"]
 [ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="1_jov0o"]
+[ext_resource type="Texture2D" uid="uid://bkmvf0i2shuq6" path="res://assets/sprites/main_menu.png" id="3_crvvm"]
 
 [node name="Options" type="CenterContainer"]
 anchors_preset = 15
@@ -45,10 +46,16 @@ text = "Fullscreen"
 
 [node name="Toggle" type="CheckButton" parent="VerticalContainer/Fullscreen"]
 layout_mode = 2
+button_pressed = true
 
 [node name="Back" type="Button" parent="VerticalContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="MainMenu" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(160, 90)
+texture = ExtResource("3_crvvm")
 
 [connection signal="toggled" from="VerticalContainer/Fullscreen/Toggle" to="." method="_on_toggle_toggled"]
 [connection signal="pressed" from="VerticalContainer/Back" to="." method="_on_back_pressed"]
