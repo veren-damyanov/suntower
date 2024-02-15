@@ -46,11 +46,20 @@ func _move_pushable(object: Sprite2D, dx: int, dy: int) -> bool:
     return false
 
 func move(dx: int, dy: int) -> void:
+    var animation: String
+    if dx == 1:
+        animation = 'right'
+    elif dx == -1:
+        animation = 'left'
+    elif dy == 1:
+        animation = 'down'
+    elif dy == -1:
+        animation = 'up'
     var current_pos = self.tilemap.local_to_map(self.position)
     var move_to = Vector2i(current_pos.x + dx, current_pos.y + dy)
     var tile_id = self.tilemap.get_cell_atlas_coords(0, move_to)
     if self.exit_open and tile_id in EXIT_TILES:
-        self._move_player(move_to)
+        self._move_player(move_to, animation)
         self.get_parent().get_parent().victory()
         return
     if tile_id in FLOOR_TILES:
@@ -59,16 +68,16 @@ func move(dx: int, dy: int) -> void:
             if object_pos != move_to:
                 continue
             if self._move_pushable(object, dx, dy):
-                self._move_player(move_to)
+                self._move_player(move_to, animation)
             return
         for object in self.interactables.get_children():
             var object_pos = self.tilemap.local_to_map(object.get_position())
             if object_pos != move_to:
                 continue
-            self._move_player(move_to)
+            self._move_player(move_to, animation)
             return
         if self.tilemap.is_tile_free(move_to):
-            self._move_player(move_to)
+            self._move_player(move_to, animation)
 
 func interact() -> void:
     var interacted = false
@@ -105,8 +114,9 @@ func interact() -> void:
     if interacted and self.lit:
         self.death()
 
-func _move_player(new_position):
+func _move_player(new_position, animation) -> void:
     self.update_visual(self, new_position)
+    self.play(animation)
     if self.tilemap.is_object_lit(self):
         if lit:
             self.death()
