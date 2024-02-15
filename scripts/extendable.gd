@@ -6,15 +6,23 @@ var state: int = 0
 @onready var tilemap = $"../../TileMap"
 
 func _ready():
-    self.set_state(self.initial_state)
+    self.set_state(self.initial_state, true)
 
-func set_state(state: int) -> void:
+func set_state(state: int, skip: bool = false) -> void:
     self.state = state
     match state:
         0:
-            self.play('down')
+            if skip:
+                self.set_animation('down')
+                self.set_frame(2)
+            else:
+                self.play('down')
         1:
-            self.play('up')
+            if skip:
+                self.set_animation('up')
+                self.set_frame(2)
+            else:
+                self.play('up')
     self.tilemap.update_occluders()
 
 func trigger() -> void:

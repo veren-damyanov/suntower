@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 
-const COOLDOWN = 1
+const COOLDOWN = 0.3
 
 var state:int = 0  # 0 is down, 1 is up
 var elapsed: float = 0

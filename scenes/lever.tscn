@@ -38,5 +38,5 @@ animations = [{
 
 [node name="Lever" type="AnimatedSprite2D" groups=["lever"]]
 sprite_frames = SubResource("SpriteFrames_76fri")
-animation = &"left"
+animation = &"right"
 script = ExtResource("3_pwkks")

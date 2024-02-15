@@ -31,7 +31,7 @@ script = ExtResource("3_jdo7i")
 position = Vector2(44, 100)
 
 [node name="Crate2" parent="Pushables" instance=ExtResource("3_xli5k")]
-position = Vector2(52, 108)
+position = Vector2(44, 108)
 
 [node name="Crate3" parent="Pushables" instance=ExtResource("3_xli5k")]
 position = Vector2(132, 100)
