@@ -89,7 +89,7 @@ func interact() -> void:
                 self.has_key = true
                 object.queue_free()
                 interacted = true
-        if object.is_in_group('note'):
+        if object.is_in_group('note') or object.is_in_group('lever'):
             if player_pos.x == object_pos.x:
                 if player_pos.y + 1 == object_pos.y or \
                 player_pos.y - 1 == object_pos.y or \
@@ -101,10 +101,6 @@ func interact() -> void:
                 player_pos.x - 1 == object_pos.x:
                     object.toggle()
                     interacted = true
-        if object.is_in_group('lever'):
-            if player_pos == object_pos:
-                object.pull()
-                interacted = true
         object_pos = Vector2i(object_pos.x, object_pos.y + 1)
         if object.is_in_group('door'):
             if !self.exit_open and self.has_key and player_pos == object_pos:

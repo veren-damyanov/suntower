@@ -1,29 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://dec1mvoc248kn"]
+[gd_scene load_steps=6 format=3 uid="uid://dec1mvoc248kn"]
 
-[ext_resource type="Texture2D" uid="uid://bkwwjlqgy7v5j" path="res://assets/sprites/lever2.png" id="1_dq3ax"]
-[ext_resource type="Texture2D" uid="uid://buiyu6x8txja1" path="res://assets/sprites/lever1.png" id="2_8q11t"]
+[ext_resource type="Texture2D" uid="uid://0gdvm4iyyfv6" path="res://assets/sprites/lever-right.png" id="1_ddpa1"]
+[ext_resource type="Texture2D" uid="uid://dyijlfejkenhj" path="res://assets/sprites/lever-up.png" id="2_i04kd"]
 [ext_resource type="Script" path="res://scripts/lever.gd" id="3_pwkks"]
+[ext_resource type="Texture2D" uid="uid://c3cty83cupxve" path="res://assets/sprites/lever-left.png" id="3_qovut"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76fri"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dq3ax")
+"texture": ExtResource("1_ddpa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i04kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qovut")
 }],
-"loop": true,
-"name": &"down",
-"speed": 5.0
+"loop": false,
+"name": &"left",
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8q11t")
+"texture": ExtResource("3_qovut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i04kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ddpa1")
 }],
-"loop": true,
-"name": &"up",
-"speed": 5.0
+"loop": false,
+"name": &"right",
+"speed": 11.0
 }]
 
 [node name="Lever" type="AnimatedSprite2D" groups=["lever"]]
 sprite_frames = SubResource("SpriteFrames_76fri")
-animation = &"up"
+animation = &"left"
 script = ExtResource("3_pwkks")

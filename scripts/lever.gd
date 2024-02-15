@@ -12,15 +12,15 @@ func _physics_process(delta: float) -> void:
     if self.elapsed < COOLDOWN:
         self.elapsed += delta
 
-func pull() -> void:
+func toggle() -> void:
     if self.elapsed < COOLDOWN:
         return
     self.elapsed = 0
     self.extendables.trigger(self.channel)
     match self.state:
         0:
-            self.play('down')
+            self.play('right')
             self.state = 1
         1:
-            self.play('up')
+            self.play('left')
             self.state = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkwwjlqgy7v5j"
-path="res://.godot/imported/lever2.png-b02d8a0868fc51583deed391c253ac01.ctex"
+uid="uid://chjx11qnej5xg"
+path="res://.godot/imported/door-closed.png-c6f7ca9a03ac5abae958a754348379d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lever2.png"
-dest_files=["res://.godot/imported/lever2.png-b02d8a0868fc51583deed391c253ac01.ctex"]
+source_file="res://assets/sprites/door-closed.png"
+dest_files=["res://.godot/imported/door-closed.png-c6f7ca9a03ac5abae958a754348379d0.ctex"]
 
 [params]
 
