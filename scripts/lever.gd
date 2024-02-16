@@ -7,6 +7,7 @@ var state:int = 0  # 0 is down, 1 is up
 var elapsed: float = 0
 @export var channel: int = 0
 @onready var extendables = $"../../Extendables"
+@onready var rumble_audio = $Rumble
 
 func _physics_process(delta: float) -> void:
     if self.elapsed < COOLDOWN:
@@ -17,6 +18,7 @@ func toggle() -> void:
         return
     self.elapsed = 0
     self.extendables.trigger(self.channel)
+    self.rumble_audio.play()
     match self.state:
         0:
             self.play('right')

@@ -44,6 +44,7 @@ text = "play"
 
 [node name="Level Select" type="Button" parent="VerticalContainer/Buttons"]
 layout_mode = 2
+disabled = true
 text = "Level Select"
 
 [node name="Options" type="Button" parent="VerticalContainer/Buttons"]

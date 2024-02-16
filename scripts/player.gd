@@ -10,6 +10,9 @@ var reading = false
 @onready var tilemap = $"../TileMap"
 @onready var pushables = $"../Pushables"
 @onready var interactables = $"../Interactables"
+@onready var step_audio = $Step
+@onready var push_audio = $Push
+@onready var collect_audio = $Collect
 
 
 func _collect_occluder_objects() -> Array[Vector2i]:
@@ -41,6 +44,7 @@ func _move_pushable(object: Sprite2D, dx: int, dy: int) -> bool:
     var push_to = Vector2(object_pos.x + dx, object_pos.y + dy)
     if self.tilemap.is_tile_free(push_to):
         self.update_visual(object, push_to)
+        self.push_audio.play()
         self.tilemap.update_occluders()
         return true
     return false
@@ -87,6 +91,7 @@ func interact() -> void:
         if object.is_in_group('key'):
             if !self.has_key and player_pos == object_pos:
                 self.has_key = true
+                self.collect_audio.play()
                 object.queue_free()
                 interacted = true
         if object.is_in_group('note') or object.is_in_group('lever'):
@@ -113,6 +118,7 @@ func interact() -> void:
 func _move_player(new_position, animation) -> void:
     self.update_visual(self, new_position)
     self.play(animation)
+    self.step_audio.play()
     if self.tilemap.is_object_lit(self):
         if lit:
             self.death()

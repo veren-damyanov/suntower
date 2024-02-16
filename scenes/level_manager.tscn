@@ -10,7 +10,6 @@ process_mode = 3
 script = ExtResource("1_xe1x5")
 
 [node name="NoteCanvas" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="NoteBackground" type="Sprite2D" parent="NoteCanvas"]
 position = Vector2(160, 90)
@@ -28,7 +27,7 @@ offset_right = 50.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 6
+theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 6
 
 [node name="NoteText" type="Label" parent="NoteCanvas/Margin"]
