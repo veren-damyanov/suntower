@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-const FLOOR_TILES = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+const FLOOR_TILES = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 5), Vector2i(4, 6)]
 const EXIT_TILES = [Vector2i(1, 2)]
 
 var lit = false
@@ -15,9 +15,6 @@ var dead = false
 @onready var push_audio = $Push
 @onready var collect_audio = $Collect
 
-
-func _collect_occluder_objects() -> Array[Vector2i]:
-    return [Vector2i(0, 0)]
 
 func _input(event: InputEvent) -> void:
     #if !event.is_pressed:

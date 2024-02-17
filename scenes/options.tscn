@@ -79,4 +79,5 @@ text = "Back"
 layout_mode = 2
 text = "     "
 
+[connection signal="toggled" from="VerticalContainer/Horizontal/Settings/Fullscreen/Toggle" to="." method="_on_toggle_toggled"]
 [connection signal="pressed" from="VerticalContainer/Horizontal/Settings/Back" to="." method="_on_back_pressed"]

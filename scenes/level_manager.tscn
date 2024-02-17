@@ -10,6 +10,7 @@ process_mode = 3
 script = ExtResource("1_xe1x5")
 
 [node name="NoteCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="NoteBackground" type="Sprite2D" parent="NoteCanvas"]
 position = Vector2(160, 90)
