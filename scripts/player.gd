@@ -80,7 +80,7 @@ func move(dx: int, dy: int) -> void:
                 continue
             self._move_player(move_to, animation)
             return
-        if self.tilemap.is_tile_free(move_to):
+        if self.tilemap.is_tile_free(move_to, true):
             self._move_player(move_to, animation)
 
 func interact() -> void:

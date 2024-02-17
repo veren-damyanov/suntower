@@ -40,7 +40,7 @@ func is_object_lit(candidate: Node2D) -> bool:
             verdict = false
     return verdict
 
-func is_tile_free(tile_pos: Vector2i):
+func is_tile_free(tile_pos: Vector2i, is_player=false):
     var tile_id = self.get_cell_atlas_coords(0, tile_pos)
     if tile_id not in FLOOR_TILES:
         return false
@@ -48,7 +48,7 @@ func is_tile_free(tile_pos: Vector2i):
         if self.local_to_map(pushable.get_position()) == tile_pos:
             return false
     for extendable in self.extendables.all():
-        if extendable.state != 1:
+        if is_player and extendable.state != 1:
             continue
         if self.local_to_map(extendable.get_position()) == tile_pos:
             return false
