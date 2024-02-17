@@ -7,6 +7,7 @@ var lit = false
 var has_key = false
 var exit_open = false
 var reading = false
+var dead = false
 @onready var tilemap = $"../TileMap"
 @onready var pushables = $"../Pushables"
 @onready var interactables = $"../Interactables"
@@ -21,6 +22,8 @@ func _collect_occluder_objects() -> Array[Vector2i]:
 func _input(event: InputEvent) -> void:
     #if !event.is_pressed:
         #return
+    if self.dead:
+        return
     if event.is_action_pressed("interact"):
         self.interact()
         return
@@ -131,4 +134,10 @@ func update_visual(object: Node2D, new_position: Vector2i) -> void:
     object.set_position(self.tilemap.map_to_local(new_position))
 
 func death():
-    self.get_parent().get_parent().death()
+    self.dead = true
+    self.play('death')
+
+func _on_animation_finished():
+    if self.dead:
+        self.get_parent().get_parent().death()
+
