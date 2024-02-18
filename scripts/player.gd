@@ -118,7 +118,7 @@ func interact() -> void:
 func _move_player(new_position, animation) -> void:
     self.update_visual(self, new_position)
     self.play(animation)
-    self.step_audio.play()
+    # self.step_audio.play()
     if self.tilemap.is_object_lit(self):
         if lit:
             self.death()
