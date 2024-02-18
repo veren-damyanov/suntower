@@ -23,7 +23,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
-text = "game design, programming, sound design - V.D.
+text = "game design, programming - V.D.
 Art - J.D.
 
 this game was developed for 
