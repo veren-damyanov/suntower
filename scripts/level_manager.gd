@@ -6,7 +6,7 @@ const BLACK = Color8(0, 0, 0, 255)
 const RED = Color8(100, 20, 20, 255)
 const GREEN = Color8(20, 100, 20, 255)
 
-var current_idx: int = 0
+var current_idx: int = Global.level_idx
 var current_level
 var unpausable = true
 var just_read = false

@@ -14,9 +14,8 @@ func _on_start_pressed() -> void:
 func _start_game() -> void:
     get_tree().change_scene_to_file('res://scenes/level_manager.tscn')
 
-
 func _on_level_select_pressed():
-    pass # Replace with function body.
+    get_tree().change_scene_to_file('res://scenes/level_select.tscn')
 
 func _on_options_pressed() -> void:
     get_tree().change_scene_to_file('res://scenes/options.tscn')

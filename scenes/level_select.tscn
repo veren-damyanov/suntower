@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2g4qkjffe7yy"]
+
+[ext_resource type="Texture2D" uid="uid://d3sl4x74dbjcf" path="res://assets/sprites/level_select.png" id="1_pe8uu"]
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="2_s6r7b"]
+[ext_resource type="PackedScene" uid="uid://bgljegb77eo52" path="res://scenes/level_panel_left.tscn" id="3_ujemk"]
+[ext_resource type="PackedScene" uid="uid://dfiy730rmfktb" path="res://scenes/level_panel_right.tscn" id="4_tdktk"]
+
+[node name="LevelSelect" type="Sprite2D"]
+texture = ExtResource("1_pe8uu")
+centered = false
+script = ExtResource("2_s6r7b")
+
+[node name="LevelPanel1" parent="." instance=ExtResource("3_ujemk")]
+position = Vector2(129, 26)
+title = "t"
+
+[node name="LevelPanel2" parent="." instance=ExtResource("4_tdktk")]
+position = Vector2(183, 26)
+title = "1"
+level = 1
+
+[node name="LevelPanel3" parent="." instance=ExtResource("4_tdktk")]
+position = Vector2(183, 82)
+title = "2"
+level = 2
+
+[node name="LevelPanel4" parent="." instance=ExtResource("3_ujemk")]
+position = Vector2(129, 82)
+title = "3"
+level = 3
+
+[node name="LevelPanel5" parent="." instance=ExtResource("3_ujemk")]
+position = Vector2(129, 138)
+title = "4"
+level = 4
+
+[node name="LevelPanel6" parent="." instance=ExtResource("4_tdktk")]
+position = Vector2(183, 138)
+title = "5"
+level = 5
