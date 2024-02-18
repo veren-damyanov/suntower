@@ -5,7 +5,7 @@ const WINDOW_TILES = [Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5),
                       Vector2i(2, 3), Vector2i(2, 4), Vector2i(2, 5),
                       Vector2i(3, 3), Vector2i(3, 4), Vector2i(3, 5)]
 const OCCLUDER_TILES = [Vector2i(3, 2), Vector2i(6, 2), Vector2i(6, 3), Vector2i(6, 4), Vector2i(6, 5), Vector2i(6, 6), Vector2i(6, 7)]
-const FLOOR_TILES = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 5), Vector2i(4, 6)]
+const FLOOR_TILES = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(4, 5), Vector2i(4, 6)]
 
 var lights = Array()
 var occluders = Array()
