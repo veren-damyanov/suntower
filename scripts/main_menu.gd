@@ -24,5 +24,8 @@ func _on_options_pressed() -> void:
 func _on_exit_pressed() -> void:
     self.get_tree().quit()
 
+func _on_credits_pressed():
+    get_tree().change_scene_to_file('res://scenes/credits.tscn')
+
 func _on_animation_finished() -> void:
     call(self.animation_callback)

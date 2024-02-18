@@ -27,12 +27,28 @@ theme = ExtResource("2_u0q60")
 theme_override_font_sizes/font_size = 32
 text = "you escaped"
 
-[node name="Main" type="Button" parent="."]
-offset_left = 131.0
-offset_top = 111.0
-offset_right = 196.0
-offset_bottom = 133.0
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.5
+offset_top = -67.0
+offset_right = 46.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Main" type="Button" parent="Buttons"]
+layout_mode = 2
 theme = ExtResource("2_u0q60")
 text = "main menu"
 
-[connection signal="pressed" from="Main" to="." method="_on_main_pressed"]
+[node name="Credits" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("2_u0q60")
+text = "credits"
+
+[connection signal="pressed" from="Buttons/Main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]

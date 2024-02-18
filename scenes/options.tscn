@@ -69,15 +69,10 @@ text = "Fullscreen"
 
 [node name="Toggle" type="CheckButton" parent="VerticalContainer/Horizontal/Settings/Fullscreen"]
 layout_mode = 2
-button_pressed = true
 
 [node name="Back" type="Button" parent="VerticalContainer/Horizontal/Settings"]
 layout_mode = 2
 text = "Back"
-
-[node name="Margin" type="Label" parent="VerticalContainer/Horizontal"]
-layout_mode = 2
-text = "     "
 
 [connection signal="toggled" from="VerticalContainer/Horizontal/Settings/Fullscreen/Toggle" to="." method="_on_toggle_toggled"]
 [connection signal="pressed" from="VerticalContainer/Horizontal/Settings/Back" to="." method="_on_back_pressed"]

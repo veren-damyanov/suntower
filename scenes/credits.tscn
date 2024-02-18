@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://eg2ks1dcpxq7"]
+
+[ext_resource type="Texture2D" uid="uid://dusqr5dey51d1" path="res://assets/sprites/credits_background.png" id="1_dm10e"]
+[ext_resource type="Theme" uid="uid://ba8w7uwv0in7s" path="res://assets/standard.tres" id="2_obxp4"]
+[ext_resource type="Script" path="res://scripts/credits.gd" id="2_pyjwt"]
+
+[node name="Credits" type="Sprite2D"]
+texture = ExtResource("1_dm10e")
+centered = false
+script = ExtResource("2_pyjwt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_obxp4")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "game design, programming, sound design - V.D.
+Art - J.D.
+
+this game was developed for 
+godot wild game jam #66
+wildcard used was: \"here comes the sun\"
+
+made using godot game engine"
