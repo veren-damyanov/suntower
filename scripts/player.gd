@@ -133,6 +133,7 @@ func update_visual(object: Node2D, new_position: Vector2i) -> void:
 func death():
     self.dead = true
     self.play('death')
+    self.push_audio.play()
 
 func _on_animation_finished():
     if self.dead:
